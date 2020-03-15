@@ -20,7 +20,7 @@ Function and URL Spesification :
 
 #### Database Design
 
-> `return_date` and `price` on `rent_transactions` table will be null at first, the value will assigned when the product returned
+> `return_date` and `price` on `rent_transactions` table will be null at first, the value will assigned when the product returned, `return_status` on `rent_transactions` define the rent status, 0 as false, else as true.
 
 ![database design](https://github.com/rizkysitohang3/rent_cd/raw/master/db.PNG)
 
