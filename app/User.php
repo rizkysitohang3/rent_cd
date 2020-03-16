@@ -18,7 +18,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email',
+        'username'
     ];
 
     /**
@@ -29,4 +29,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+    
+    /**
+     * A user can have many rent transactions
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    
+    public function rentTransactions() 
+    {
+        return $this->hasMany('App\RentTransaction');
+    }
+    
+    
 }
