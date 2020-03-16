@@ -9,6 +9,7 @@ the `product` word on the app define the CD
 Function and URL Spesification :
 > assume the user can show all product or specified product, then app function for borrow takes the product id
 > assume the user can show all transaction, then app function for return takes the transaction id instead of product and user id
+>assume the user can only rent one item
 > there is no authentication on the application
 
 - show all product  `GET /products`
