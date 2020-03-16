@@ -32,7 +32,7 @@ class TransactionTest extends TestCase
 		}
 		
 		
-		}
+		
     
 		
 		/**
