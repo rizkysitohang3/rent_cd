@@ -22,7 +22,7 @@ class TransactionTest extends TestCase
 				'user_id',
 				'product_id',
 				'rent_date',
-				'return_status'
+				'returned'
 				
 				]
 			
@@ -40,18 +40,28 @@ class TransactionTest extends TestCase
 		 * 
 		 * **/
 		 
-	public function test_return_transaction(){
+	public function test_return_unreturned_transaction(){
 		
 		
 		$this->get("transactions/1/return",[]);
 		$this->seeStatusCode(200);
-		$this->seeJsonStructure([
-			'status',
-			'message'
+		$this->seeJson([
+			'status'=>'success'
 			
 			]);
 		
 		}
 
+	public function test_return_returned_transaction(){
+		
+		
+		$this->get("transactions/2/return",[]);
+		$this->seeStatusCode(200);
+		$this->seeJson([
+			'status'=>'failed'
+			
+			]);
+		
+		}
 	
 }
