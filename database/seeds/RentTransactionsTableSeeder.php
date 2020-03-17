@@ -11,15 +11,20 @@ class RentTransactionsTableSeeder extends Seeder
     {
         
 			
-		DB::table('rent_transactions')->insert([
+		DB::table('rent_transactions')->insert(
             [
                 
                 'user_id' => 1,
                 'product_id' => 1, 
-                'rent_date' => Carbon::create('2020', '03', '10')
+                'rent_date' => Carbon::create('2020', '03', '10'),
                 'returned' => false
                 
-            ], [
+            ]);
+            
+          
+            
+           
+          DB::table('rent_transactions')->insert([ 
                 
                 'user_id' => 2,
                 'product_id' => 1, 
@@ -28,7 +33,7 @@ class RentTransactionsTableSeeder extends Seeder
                 'price' =>2.0,
                 'returned'=> true
             ]
-        ]);
+        );
         
         
     }
