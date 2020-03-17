@@ -16,6 +16,23 @@ class ProductController extends Controller
         //
     }
 
+    public function getProducts(Request $request){
+			$product = Product::all();
+			return $product;
+		
+		
+		
+		}
+    
+    public function getProduct(Request $request,$id){
+			$product = Product::find($id);
+			return $product;
+		
+			
+		}
+    
+    
+    
     
     
 }
