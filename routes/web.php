@@ -14,3 +14,14 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+
+
+$router->get('/products','ProductController@getProducts');
+$router->get('/products/{id}','ProductController@getProduct');
+$router->put('/products/{id}','ProductController@updateProductStock');
+$router->post('/products/{id}/rent','ProductController@rentProduct');
+$router->get('/transactions','RentTransactionController@getRentTransactions');
+$router->get('/transactions/{id}/return','RentTransactionController@returnRentTransaction');
+
+
