@@ -1,4 +1,4 @@
-# Rent CD API
+# Simple API for RentCD 
 
 Simple API on Rent CD case created with lumen and Test Drive Development Approach
 
@@ -9,11 +9,11 @@ the `product` word on the app define the CD
 Function and URL Spesification :
 > assume the user can show all product or specified product, then app function for borrow takes the product id
 
-> assume the user can show all transaction, then app function for return takes the transaction id instead of product and user id
+> assume the user can show all transaction, then app function for return a rent transaction by rent transaction id
 
->assume the user can only rent one item
+> assume the user can only rent one item per time
 
->assume there is no authentication on the application
+> assume there is no authentication on the application
 
 - show all product  `GET /products`
 - show product with specified id  `GET /products/{id}`
@@ -24,7 +24,9 @@ Function and URL Spesification :
 
 #### Database Design
 
-> `return_date` and `price` on `rent_transactions` table will be null at first, the value will assigned when the product returned, `return_status` on `rent_transactions` define the rent status, 0 as false, 1 as true.
+> `return_date` and `price` on `rent_transactions` table will be null at first, the value will assigned when the product returned
+
+> `returned` on `rent_transactions` define the rent status, 0 as false, 1 as true. it helps to determine which transaction is returnable
 
 ![database design](https://github.com/rizkysitohang3/rent_cd/raw/master/db.PNG)
 
@@ -43,7 +45,7 @@ There will be only 2 test class :
   - test for show all transaction
   
   
-### App Testing Demo 
+### App Demo 
 
 Run the Following instruction to create Table :
 - Make sure the `.env` file set correctly
@@ -51,7 +53,7 @@ Run the Following instruction to create Table :
 
 > composer install
 
-![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/composer-install-pic.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/composer-install-pic.png)
 
 >php artisan migrate:install
 
@@ -59,25 +61,69 @@ Run the Following instruction to create Table :
 
 > php artisan db:seed 
 
-![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/creating%20database.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/creating%20database.png)
 
 #### The database structure should be : 
 
-![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/all%20tables.png)
-![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/products%20and%20users%20table.png)
-![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/rent%20transactions%20table.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/all%20tables.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/products%20and%20users%20table.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/rent%20transactions%20table.png)
 
 
 #### The database seed data should be : 
 
-![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/table%20data.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/table%20data.png)
 
-#### Test
+#### Testing
 
-![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/all%20test%20passed.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/all%20test%20passed.png)
 
+### API Usage
 
+#### Show All Product
 
+> GET /products
+  
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/get-products.png)
+
+#### Show Product by specified id
+
+> GET /products/{id}
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/get-product-by-id.png)
+
+#### Update Product stock
+
+> PUT /products/{id}?quantity=
+
+Parameter : 
+  - `quantity` = input new quantity of product 
+  
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/product-stock-update.png)
+ 
+#### Rent a Product
+
+> GET /products/{id}/rent?user_id=
+
+Constraint : the product can only rented if the quantity(stock) is at least 1 or more
+Parameter : 
+  - `user_id` : given user id which rent the product
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/rent-out-of-stock-product.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/rent-out-of-stock-product.png)
+
+#### Show All Rent Transactions
+
+> GET /transactions
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/get-transactions.png)
+
+#### Return a Rent Transaction
+
+> GET /transactions/{id}/return
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/return-success.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/assets/return-transaction-failed.png)
 
 
 
