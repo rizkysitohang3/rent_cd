@@ -16,10 +16,8 @@ class RentTransactionsTableSeeder extends Seeder
                 
                 'user_id' => 1,
                 'product_id' => 1, 
-                'rent_date' => Carbon::create('2020', '01', '01'),
-                'return_date' => Carbon::create('2020', '01', '02'),
-                'price'=>2.0,
-                'returned' => true
+                'rent_date' => Carbon::create('2020', '03', '10')
+                'returned' => false
                 
             ], [
                 
