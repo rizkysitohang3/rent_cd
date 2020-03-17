@@ -36,7 +36,11 @@ class RentTransactionController extends Controller
 				
 						$rent_transaction->returned = true;
 						$rent_transaction->return_date= Carbon::today();
-						$day_count = ceil(abs($rent_transaction->return_date-$rent_transaction->rent_date )  / 86400);
+						
+						$rent_date =Carbon::parse($rent_transaction->rent_date);
+						$now = Carbon::now();
+						$day_count = $rent_date->diffInDays($now);
+						
 						$product = Product::find($rent_transaction->product_id);
 						$rent_transaction->price = $day_count * $product->rate;
 						$product->quantity =  $product->quantity  + 1;
