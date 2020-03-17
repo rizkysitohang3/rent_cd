@@ -17,7 +17,7 @@ class TransactionTest extends TestCase
 		$this->get("transactions",[]);
 		$this->seeStatusCode(200);
 		$this->seeJsonStructure([
-			'data' => ['*' => [
+			'*' => [
 				'id',
 				'user_id',
 				'product_id',
@@ -25,7 +25,7 @@ class TransactionTest extends TestCase
 				'return_status'
 				
 				]
-			]
+			
 			]);
 		
 		

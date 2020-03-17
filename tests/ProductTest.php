@@ -16,12 +16,12 @@ class ProductTest extends TestCase
 		$this->get("products",[]);
 		$this->seeStatusCode(200);
 		$this->seeJsonStructure([
-			'data' => ['*' => [
+			'*' => [
 				'title',
 				'rate',
 				'quantity'
 				]
-			]
+			
 			]);
 		
 		
@@ -37,13 +37,13 @@ class ProductTest extends TestCase
 		$this->get("products/1",[]);
 		$this->seeStatusCode(200);
 		$this->seeJsonStructure([
-			'data' => [
+			
 				'title',
 				'rate',
 				'quantity'
 				]
 			
-			]);
+			);
 		
 		
 		
@@ -74,8 +74,8 @@ class ProductTest extends TestCase
 		
 	public function test_rent_product(){
 		
-		
-		$this->post("products/1/rent",[]);
+		$parameters = ['user_id' => 1];
+		$this->post("products/1/rent",$parameters);
 		$this->seeStatusCode(200);
 		$this->seeJsonStructure([
 			'status',
