@@ -19,7 +19,7 @@ class ProductsTableSeeder extends Seeder
             [
                 'title' => 'aiglien and the beast', 
                 'rate' => 2.0,
-                'quantity'=> 10
+                'quantity'=> 0
             ]
         );
         
