@@ -1,6 +1,6 @@
 # Rent CD API
 
-Simple API on Rent CD case created with lumen
+Simple API on Rent CD case created with lumen and Test Drive Development Approach
 
 #### App Spesification
 
@@ -36,11 +36,46 @@ There will be only 2 test class :
   - test for showing all products 
   - test for showing specific product by id 
   - test for update a product quantity by id 
-  - test for rent a product
+  - test for rent a product which is has stock
+  - test for rent a product which is out of stock
 - `TransactionTest` :
   - test for return a transaction
   - test for show all transaction
   
+  
+### App Testing Demo 
+
+Run the Following instruction to create Table :
+- Make sure the `.env` file set correctly
+- Run all command below
+
+> composer install
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/composer-install-pic.png)
+
+>php artisan migrate:install
+
+> php artisan migrate
+
+> php artisan db:seed 
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/creating%20database.png)
+
+#### The database structure should be : 
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/all%20tables.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/products%20and%20users%20table.png)
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/rent%20transactions%20table.png)
+
+
+#### The database seed data should be : 
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/table%20data.png)
+
+#### Test
+
+![pic](https://github.com/rizkysitohang3/rent_cd/blob/master/all%20test%20passed.png)
+
 
 
 
