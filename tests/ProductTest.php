@@ -55,7 +55,7 @@ class ProductTest extends TestCase
 		 * **/
 		
 	public function test_change_product_quantity(){
-		$parameters = ['quantity' => 10 ];
+		$parameters = ['quantity' => 19 ];
 		$this->put("products/1",$parameters);
 		$this->seeStatusCode(200);
 		$this->seeJsonStructure([
@@ -72,19 +72,33 @@ class ProductTest extends TestCase
 		 * 
 		 * **/
 		
-	public function test_rent_product(){
+	public function test_rent_available_product(){
 		
 		$parameters = ['user_id' => 1];
 		$this->post("products/1/rent",$parameters);
 		$this->seeStatusCode(200);
-		$this->seeJsonStructure([
-			'status',
-			'message'
+		$this->seeJson([
+			'status' =>'success'
+			
 			
 			]);
 		
 		
 		}
+		
+	public function test_rent_unavailable_product(){
+		
+		$parameters = ['user_id' => 1];
+		$this->post("products/2/rent",$parameters);
+		$this->seeStatusCode(200);
+		$this->seeJson([
+			'status' =>'failed'
+			
+			]);
+		
+		
+		}	
+		
 }
 		
 		
