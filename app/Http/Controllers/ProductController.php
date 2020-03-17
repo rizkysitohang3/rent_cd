@@ -30,7 +30,14 @@ class ProductController extends Controller
 		
 			
 		}
-    
+		
+    public function updateProductStock(Request $request,$id){
+			$newvalue = $request->input('quantity');
+			$product = Product::where('id',$id)->update(['quantity' => $newvalue]);
+			return ['status'=>'success','message'=>'update success'];
+		
+			
+		}
     
     
     
