@@ -133,8 +133,11 @@ Requirements :
 - Docker version 19.03.5
 - Docker-compose version 1.24.1
 
-> Guide
+#### Guide
 
+- Set permission to entrypoint
+
+  `chmod +x ./entrypoint.sh`
 - Run docker-compose
 
   `docker-compose up -d --build`
