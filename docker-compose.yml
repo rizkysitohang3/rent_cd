@@ -1,0 +1,46 @@
+version: '2'
+services:
+    webserver:
+        image: nginx:alpine
+        ports:
+            - "8082:80"
+        volumes:
+            - ".:/var/www"
+            - "./conf.d:/etc/nginx/conf.d/"
+        networks:
+            project:
+                ipv4_address: 172.13.2.10
+        restart: always
+    apps:
+        build: .    
+        volumes:
+            - ".:/var/www"
+        working_dir: /var/www
+        networks:
+            project:
+                ipv4_address: 172.13.2.11
+        restart: always
+    db:
+        image: mysql:5.6
+        command: --slow-query-log=1 --long-query-time=2 --slow-query-log-file=/var/lib/mysql/mysql-slow.log
+        command: ['mysqld','--character-set-server=utf8mb4','--collation-server=utf8mb4_unicode_ci']
+        ports:
+            - "3306:3306"
+        volumes:
+            - "./data:/var/lib/mysql"
+        environment:
+            - MYSQL_DATABASE=rentcd_db
+            - MYSQL_USER=kylex
+            - MYSQL_PASSWORD=ganteng
+            - MYSQL_ROOT_PASSWORD=n62PNqeQhpKetz9tykaZfq
+        networks:
+            project:
+                ipv4_address: 172.13.2.12
+        restart: always
+
+networks:
+    project:
+        ipam:
+            config:
+                - subnet: 172.13.0.0/16
+                  ip_range: 172.13.2.0/24
