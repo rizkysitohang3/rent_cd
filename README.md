@@ -127,5 +127,21 @@ Parameter :
 
 
 
+### Docker
+
+Requirements : 
+- Docker version 19.03.5
+- Docker-compose version 1.24.1
+
+> Guide
+
+- Run docker-compose
+
+  `docker-compose up -d --build`
+- Check your docker services
+
+  `docker ps`
+
+
 
 
