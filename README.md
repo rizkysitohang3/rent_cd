@@ -144,7 +144,9 @@ Requirements :
 - Check your docker services
 
   `docker ps`
+  
+##### Notes
 
-
+Docker bind the app port to 8082, to check API endpoint `use localhost:8082` instead of `localhost:8080` or change port on `docker-compose.yml`
 
 
